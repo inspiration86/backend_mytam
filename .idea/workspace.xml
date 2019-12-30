@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b3cc2b2d-c509-4365-adfc-d3b584a34ece" name="Default" comment="" />
+    <list default="true" id="b3cc2b2d-c509-4365-adfc-d3b584a34ece" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/modules/routes/api/api-v1.js" beforeDir="false" afterPath="$PROJECT_DIR$/modules/routes/api/api-v1.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/routes/api/middleware/apiAuth.js" beforeDir="false" afterPath="$PROJECT_DIR$/modules/routes/api/middleware/apiAuth.js" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,22 +34,25 @@
       <file leaf-file-name="api-v1.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modules/routes/api/api-v1.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="366">
-              <caret line="168" column="20" lean-forward="true" selection-start-line="168" selection-start-column="20" selection-end-line="168" selection-end-column="20" />
+            <state relative-caret-position="44">
+              <caret line="16" column="9" lean-forward="true" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="user.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/modules/models/user.js">
+      <file leaf-file-name="apiAuth.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/modules/routes/api/middleware/apiAuth.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="372">
-              <caret line="18" column="39" selection-start-line="18" selection-start-column="39" selection-end-line="18" selection-end-column="39" />
+            <state relative-caret-position="107">
+              <caret line="33" selection-start-line="33" selection-end-line="33" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -98,10 +104,10 @@
         <option value="$PROJECT_DIR$/server.js" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/modules/routes/api/middleware/apiAuthAdmin.js" />
-        <option value="$PROJECT_DIR$/modules/routes/api/middleware/apiAuth.js" />
         <option value="$PROJECT_DIR$/modules/models/slider.js" />
-        <option value="$PROJECT_DIR$/modules/routes/api/api-v1.js" />
         <option value="$PROJECT_DIR$/modules/models/user.js" />
+        <option value="$PROJECT_DIR$/modules/routes/api/api-v1.js" />
+        <option value="$PROJECT_DIR$/modules/routes/api/middleware/apiAuth.js" />
       </list>
     </option>
   </component>
@@ -266,24 +272,24 @@
       <workItem from="1576787257904" duration="100213000" />
       <workItem from="1577467992372" duration="11508000" />
       <workItem from="1577512868122" duration="36302000" />
+      <workItem from="1577694055760" duration="1390000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="429688000" />
+    <option name="totallyTimeSpent" value="431078000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3293718" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info id="npm" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.13073005" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.8671875" visible="true" weight="0.25945538" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3293718" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.4770798" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.8671875" visible="true" weight="0.2632375" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" weight="0.32980332" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24962178" />
@@ -299,27 +305,27 @@
       <window_info anchor="bottom" id="Find" order="1" weight="0.3293718" />
     </layout>
     <layout-to-restore>
+      <window_info anchor="bottom" id="Version Control" order="11" show_stripe_button="false" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3293718" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.8671875" visible="true" weight="0.25945538" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24962178" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="TypeScript" order="12" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3293718" />
+      <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" id="Database" order="3" weight="0.32980332" />
       <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.13073005" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Version Control" order="11" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info id="Favorites" order="3" sideWeight="0.1328125" side_tool="true" visible="true" weight="0.25945538" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3293718" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.8671875" visible="true" weight="0.25945538" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -449,9 +455,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package-lock.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/package-lock.json" />
     <entry file="file://$PROJECT_DIR$/modules/controllers/api/v1/AuthController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="104">
@@ -470,9 +474,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="122">
           <caret line="21" column="13" selection-start-line="21" selection-end-line="40" />
-          <folding>
-            <element signature="e#811#1313#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -480,9 +481,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="227">
           <caret line="42" column="1" lean-forward="true" selection-start-line="42" selection-start-column="1" selection-end-line="42" selection-end-column="1" />
-          <folding>
-            <element signature="e#238#888#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -518,13 +516,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="27">
           <caret line="1" column="16" selection-end-line="1" selection-end-column="63" />
-          <folding>
-            <element signature="e#153#578#0" />
-            <element signature="e#601#1095#0" />
-            <element signature="e#1118#1644#0" />
-            <element signature="e#1667#2335#0" />
-            <element signature="e#2359#2940#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -558,13 +549,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-216">
           <caret line="49" column="23" lean-forward="true" selection-start-line="49" selection-start-column="23" selection-end-line="49" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/routes/api/middleware/apiAuth.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-736">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
         </state>
       </provider>
     </entry>
@@ -643,13 +627,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/models/user_type.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="1" column="12" lean-forward="true" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/models/user_type.js" />
     <entry file="file://$PROJECT_DIR$/modules/models/slider.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="243">
@@ -664,17 +642,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/routes/api/api-v1.js">
+    <entry file="file://$PROJECT_DIR$/modules/models/user.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="168" column="20" lean-forward="true" selection-start-line="168" selection-start-column="20" selection-end-line="168" selection-end-column="20" />
+        <state relative-caret-position="39">
+          <caret line="18" column="39" selection-start-line="18" selection-start-column="39" selection-end-line="18" selection-end-column="39" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/models/user.js">
+    <entry file="file://$PROJECT_DIR$/modules/routes/api/api-v1.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="372">
-          <caret line="18" column="39" selection-start-line="18" selection-start-column="39" selection-end-line="18" selection-end-column="39" />
+        <state relative-caret-position="44">
+          <caret line="16" column="9" lean-forward="true" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/routes/api/middleware/apiAuth.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="107">
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
         </state>
       </provider>
     </entry>

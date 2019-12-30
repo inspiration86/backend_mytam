@@ -29,9 +29,8 @@ module.exports = (req , res , next) =>  {
 
             // next();
             // return;
-        })
+        }
     }
-
     return res.status(403).json({
         data : 'No Token Provided',
         success : false

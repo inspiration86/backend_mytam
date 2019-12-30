@@ -1,5 +1,4 @@
 // Model
-const User_Type=require(`${config.path.model}/user_type`);
 const User = require(`${config.path.model}/user`);
 const News = require(`${config.path.model}/news`);
 const GroupNews = require(`${config.path.model}/groupnews`);
@@ -17,7 +16,7 @@ const Video = require(`${config.path.model}/video`);
 
 module.exports = class Controller {
     constructor() {
-        this.model = { User,News,GroupNews,Article,User_Type,
+        this.model = { User,News,GroupNews,Article,
             Comment,Cooperator,AdminUser,Slider,Role,GroupArticle,
             Product , Comment , Answer,ProjectUs,Video}
     }

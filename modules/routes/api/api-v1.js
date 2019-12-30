@@ -159,7 +159,7 @@ router.use('/admin' , apiAuthAdmin, apiAdmin , adminRouter);
 
 //router.use('/admin',[ adminRouter,employeeRouter]);
 
-router.get('/user' , apiAuth ,UserController.index.bind(UserController));
+//router.get('/user' , apiAuth ,UserController.index.bind(UserController));
 
 //router.get('/user' , apiAuth ,(req,res)=>{return res.json('hello user')});
 
