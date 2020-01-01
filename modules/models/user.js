@@ -22,10 +22,11 @@ UserSchema.plugin(timestamps);
 UserSchema.plugin(mongoosePaginate);
 
 UserSchema.pre('save' , function(next) {
-    
-    bcrypt.hash(this.password, 10, (err, hash) => {
+        bcrypt.hash(this.password, 10, (err, hash) => {
         this.password = hash;
         next();
     });
 })
+
+
 module.exports = mongoose.model('User' , UserSchema);

@@ -25,6 +25,7 @@ const { uploadVideo } = require('./middleware/UploadMiddleware');
 const { api : ControllerApi } = config.path.controllers;
 const HomeController = require(`${ControllerApi}/v1/HomeController`);
 const AuthController = require(`${ControllerApi}/v1/AuthController`);
+const ResetPasswordController = require(`${ControllerApi}/v1/ResetPasswordController`);
 const UserController = require(`${ControllerApi}/v1/UserController`);
 const ArticleController = require(`${ControllerApi}/v1/ArticleController`);
 const NewsController = require(`${ControllerApi}/v1/NewsController`);
@@ -34,6 +35,7 @@ const CooperatorController = require(`${ControllerApi}/v1/CooperatorController`)
 // AdminController
 const AdminAuthController = require(`${ControllerApi}/v1/admin/AdminAuthController`);
 const AdminUserController = require(`${ControllerApi}/v1/admin/AdminUserController`);
+const AdminUserUserController = require(`${ControllerApi}/v1/admin/UserController`);
 const AdminUploadController = require(`${ControllerApi}/v1/admin/UploadController`);
 const AdminRoleController = require(`${ControllerApi}/v1/admin/RoleController`);
 const AdminSliderController = require(`${ControllerApi}/v1/admin/SliderController`);
@@ -50,6 +52,7 @@ const AdminProductController = require(`${ControllerApi}/v1/admin/ProductControl
 //user router
 router.get('/' , HomeController.index);
 router.get('/version' , HomeController.version);
+router.post('/resetpassword' , ResetPasswordController.resetpassword.bind(ResetPasswordController));
 router.post('/login' , AuthController.login.bind(AuthController));
 router.post('/register' , AuthController.register.bind(AuthController));
 //router.get('/user' , apiAuth , UserController.index.bind(UserController));
@@ -66,6 +69,14 @@ router.post('/comment' , CommentController.store.bind(CommentController));
 //upload
 adminRouter.post('/image' , uploadImage.single('image') , AdminUploadController.uploadImage.bind(AdminUploadController));
 adminRouter.post('/video' , uploadVideo.single('video') , AdminUploadController.uploadVideo.bind(AdminUploadController));
+
+//user
+adminRouter.get('/user' , AdminUserUserController.index.bind(AdminUserUserController));
+adminRouter.get('/user/:id' , AdminUserUserController.single.bind(AdminUserUserController));
+//adminRouter.post('/user' , AdminUserUserController.store.bind(AdminUserUserController));
+adminRouter.delete('/user/:id' , AdminUserUserController.destroy.bind(AdminUserUserController));
+adminRouter.put('/user/:id' , AdminUserUserController.update.bind(AdminUserUserController));
+
 
 //role
 adminRouter.get('/role' , AdminRoleController.index.bind(AdminRoleController));
@@ -149,9 +160,9 @@ adminRouter.delete('/news/:id' , AdminNewsController.destroy.bind(AdminNewsContr
 employeeRouter.get('/test',(req,res)=>{
     return res.json('hello');
 })
-//router.use('/admin',adminRouter);
+router.use('/admin',adminRouter);
 
-router.use('/admin' , apiAuthAdmin, apiAdmin , adminRouter);
+//router.use('/admin' , apiAuthAdmin, apiAdmin , adminRouter);
 //router.use('/employee' , apiAuth , apiEmployee , employeeRouter);
 //router.use('/agent' , apiAuth , apiAgent , adminRouter);
 //router.use('/developer' , apiAuth , apiDeveloper , adminRouter);
