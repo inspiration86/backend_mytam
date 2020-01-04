@@ -9,6 +9,7 @@ module.exports = class AdminUserTransform extends Transform {
             '_id' : item._id,
             'email' : item.email,
             'type' :item.type,
+            'role':item.role,
             ...this.withToken(item)
         }
     }

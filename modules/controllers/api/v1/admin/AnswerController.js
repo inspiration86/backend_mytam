@@ -46,6 +46,7 @@ module.exports = new class AnswerController extends Controller {
         req.checkBody('admin_user' , ' کاربر نمیتواند خالی بماند').notEmpty();
         req.checkBody('replay' , 'پاسخ محصول نمیتواند خالی بماند').notEmpty();
         req.checkBody('comment_Id' , 'آیدی کامنت نمیتواند خالی بماند').notEmpty();
+        req.checkBody('date' , 'تاریخ کامنت نمیتواند خالی بماند').notEmpty();
 
         this.escapeAndTrim(req , 'admin_user replay');
 
@@ -55,6 +56,7 @@ module.exports = new class AnswerController extends Controller {
         let newAnswer = new this.model.Answer({
             admin_user : req.body.admin_user,
             replay: req.body.replay,
+            date:req.body.date,
             comment_Id: req.body.comment_Id
 
         })
@@ -73,6 +75,7 @@ module.exports = new class AnswerController extends Controller {
             {
                 user : 'req.body.user',
                 replay:'req.body.replay',
+                date:req.body.date,
                 comment_Id:'req.body.comment_Id'
             },
             (err , answer) => {

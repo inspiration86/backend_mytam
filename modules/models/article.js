@@ -11,7 +11,9 @@ const ArticleSchema = new Schema({
     author : { type : String , required : true},
     image : { type :String,required:true},
     alt_img:{type:String},
-    detail : { type :String,required:true}
+    detail : { type :String,required:true},
+    date: { type :String,required:true}
+
 });
 ArticleSchema.plugin(timestamps);
 ArticleSchema.plugin(mongoosePaginate);

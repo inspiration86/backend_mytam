@@ -10,7 +10,8 @@ const NewsSchema = new Schema({
     key_title : { type :String },
     active : { type :Boolean , default:false},
     image : { type : String , required : true},
-    group_name: { type :String,required:true}
+    group_name: { type :String,required:true},
+    date: { type :String,required:true}
 });
 NewsSchema.plugin(timestamps);
 NewsSchema.plugin(mongoosePaginate);

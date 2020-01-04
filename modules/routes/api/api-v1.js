@@ -43,7 +43,6 @@ const AdminVideoController = require(`${ControllerApi}/v1/admin/VideoController`
 const AdminNewsController = require(`${ControllerApi}/v1/admin/NewsController`);
 const AdminGroupNewsController = require(`${ControllerApi}/v1/admin/GroupnewsController`);
 const AdminArticleController = require(`${ControllerApi}/v1/admin/ArticleController`);
-const AdminUserTypeController = require(`${ControllerApi}/v1/admin/UserTypeController`);
 const AdminCommentController = require(`${ControllerApi}/v1/admin/CommentController`);
 const AdminCooperatorController = require(`${ControllerApi}/v1/admin/CooperatorController`);
 const AdminProjectUsController = require(`${ControllerApi}/v1/admin/ProjectUsController`);
@@ -121,13 +120,6 @@ adminRouter.get('/comment/:id' , AdminCommentController.single.bind(AdminComment
 adminRouter.post('/comment' , AdminCommentController.store.bind(AdminCommentController));
 adminRouter.put('/comment/:id' , AdminCommentController.update.bind(AdminCommentController));
 adminRouter.delete('/comment/:id' , AdminCommentController.destroy.bind(AdminCommentController));
-
-//user type
-adminRouter.get('/user_type' , AdminUserTypeController.index.bind(AdminUserTypeController));
-adminRouter.get('/user_type/:id' , AdminUserTypeController.single.bind(AdminUserTypeController));
-adminRouter.post('/user_type' , AdminUserTypeController.store.bind(AdminUserTypeController));
-adminRouter.put('/user_type/:id' , AdminUserTypeController.update.bind(AdminUserTypeController));
-adminRouter.delete('/user_type/:id' , AdminUserTypeController.destroy.bind(AdminUserTypeController));
 
 //cooperator
 adminRouter.get('/cooperator', AdminCooperatorController.index.bind(AdminCooperatorController));

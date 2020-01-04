@@ -40,7 +40,7 @@ module.exports = new class ProjectUsController extends Controller {
         req.checkBody('title' , ' فیلد عنوان نمی تواند خالی بماند').notEmpty();
         req.checkBody('feature' , ' فیلد ویژگی ها نمی تواند خالی بماند').notEmpty();
 
-        this.escapeAndTrim(req , 'feature title');
+       // this.escapeAndTrim(req , 'feature title');
 
         if(this.showValidationErrors(req, res))
             return;

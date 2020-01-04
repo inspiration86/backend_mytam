@@ -3,21 +3,19 @@ const NewsTransform = require(`${config.path.transform}/v1/NewsTransform`);
 
 module.exports = new class NewsController extends Controller {
     index(req , res) {
-        const page = req.query.page || 1;
-        this.model.News.paginate({} , { page , limit : 10,sort:{createdAt:'desc'},select:'title abstract detail image group_name'}).then(result => {
-            if(result) {
-                return res.json({
-                    data : new NewsTransform().withPaginate().transformCollection(result),
-                    success : true
+        this.model.News.find({}).sort({title:-1}).exec((err , news) => {
+            if(err) throw err;
+            if(news) {
+                return res.json ({
+                    data: news,
+                    success: true
                 });
             }
-
             res.json({
-                message : 'خبری وجود ندارد',
+                data : 'هیچ  خبری وجود ندارد',
                 success : false
             })
-        })
-            .catch(err => console.log(err));
+        });
     }
 
     single(req, res) {
@@ -37,7 +35,6 @@ module.exports = new class NewsController extends Controller {
             })
         })
     }
-
     store(req , res) {
         // Validation
         req.checkBody('title' , 'عنوان خبر نمی تواند خالی بماند').notEmpty();
@@ -45,6 +42,7 @@ module.exports = new class NewsController extends Controller {
         req.checkBody('detail' , 'جزییات خبر نمی تواند خالی بماند').notEmpty();
         req.checkBody('image' , 'آدرس تصویر خبر نمی تواند خالی بماند').notEmpty();
         req.checkBody('group_name' , 'گروه خبر نمی تواند خالی بماند').notEmpty();
+        req.checkBody('date' , 'تاریخ خبر نمی تواند خالی بماند').notEmpty();
 
         this.escapeAndTrim(req , 'title abstract detail group_name');
         // if(this.showValidationErrors(req, res))
@@ -57,7 +55,8 @@ module.exports = new class NewsController extends Controller {
             key_title : req.body.key_title,
             keyword : req.body.keyword,
             active : req.body.active,
-            group_name:req.body.group_name
+            group_name:req.body.group_name,
+            date:req.body.date
         })
         newNews.save(err => {
             if(err) throw err;
@@ -72,7 +71,8 @@ module.exports = new class NewsController extends Controller {
         this.model.News.findByIdAndUpdate(req.params.id ,{ title : req.body.title,abstract : req.body.abstract,detail : req.body.detail,
                 image : req.body.image,group_name : req.body.group_name,
             active : req.body.active,keyword : req.body.keyword,
-            key_title : req.body.key_title}, (err , news) => {
+            key_title : req.body.key_title,date:req.body.date},
+            (err , news) => {
             if(err) throw err;
 
             if(news) {

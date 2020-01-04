@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const timestamps = require('mongoose-timestamp');
 const Schema = mongoose.Schema;
 const OfferSchema = new Schema({
-    product_Id : { type : String , required : true},
+    product_Id : { type : String , required : true,unique:true},
     title : { type : String , required : true},
     offer_type : { type : String , required : true},
     offer_code : { type : String , required : true},

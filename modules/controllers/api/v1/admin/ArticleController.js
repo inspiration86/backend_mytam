@@ -2,21 +2,38 @@ const Controller = require(`${config.path.controller}/Controller`);
 const ArticleTransform = require(`${config.path.transform}/v1/ArticleTransform`);
 
 module.exports = new class ArticleController extends Controller {
+    // index(req , res) {
+    //     const page = req.query.page || 1;
+    //     this.model.Article.paginate({} , { page , limit : 10,sort:{createdAt:'desc'}}).then(result => {
+    //         if(result) {
+    //             return res.json({
+    //                 data : new ArticleTransform().withPaginate().transformCollection(result),
+    //                 success : true
+    //             });
+    //         }
+    //         res.json({
+    //             message : 'مقاله ای وجود ندارد',
+    //             success : false
+    //         })
+    //     })
+    //         .catch(err => console.log(err));
+    // }
+
+
     index(req , res) {
-        const page = req.query.page || 1;
-        this.model.Article.paginate({} , { page , limit : 10,sort:{createdAt:'desc'}}).then(result => {
-            if(result) {
-                return res.json({
-                    data : new ArticleTransform().withPaginate().transformCollection(result),
-                    success : true
+        this.model.Article.find({}).sort({title:-1}).exec((err , article) => {
+            if(err) throw err;
+            if(article) {
+                return res.json ({
+                    data: article,
+                    success: true
                 });
             }
             res.json({
-                message : 'مقاله ای وجود ندارد',
+                data : 'هیچ مقاله ای وجود ندارد',
                 success : false
             })
-        })
-            .catch(err => console.log(err));
+        });
     }
 
     single(req, res) {
@@ -45,6 +62,7 @@ module.exports = new class ArticleController extends Controller {
         req.checkBody('author' , 'نویسنده مقاله نمی تواند خالی بماند').notEmpty();
         req.checkBody('image' , 'تصویر مقاله نمی تواند خالی بماند').notEmpty();
         req.checkBody('detail' , 'متن مقاله نمی تواند خالی بماند').notEmpty();
+        req.checkBody('date' , 'تاریخ مقاله نمی تواند خالی بماند').notEmpty();
 
         this.escapeAndTrim(req , 'title abstract detail author');
 
@@ -61,7 +79,7 @@ module.exports = new class ArticleController extends Controller {
             keyword:req.body.keyword,
             key_title:req.body.key_title,
             active:req.body.active,
-            file:req.body.file
+            date:req.body.date,
         })
 
         newArticle.save(err => {
@@ -76,7 +94,7 @@ module.exports = new class ArticleController extends Controller {
             return;
         this.model.Article.findByIdAndUpdate(req.params.id ,{ title : req.body.title,abstract : req.body.abstract,detail : req.body.detail,
             image : req.body.image,keyword : req.body.keyword,alt_img : req.body.alt_img,
-            key_title : req.body.key_title,author : req.body.author,active : req.body.active}, (err , article) => {
+            key_title : req.body.key_title,author : req.body.author,active : req.body.active,date:req.body.data}, (err , article) => {
             if(err) throw err;
 
             if(article) {

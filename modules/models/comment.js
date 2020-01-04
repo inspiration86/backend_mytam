@@ -6,7 +6,9 @@ const CommentSchema=new Schema({
     name:{type:String,required:true},
     comment:{type:String,required:true},
     product_Id:{type:String,required:true},
-    active:{type:Boolean,default: 'false'}
+    active:{type:Boolean,default: 'false'},
+    date: { type :String,required:true}
+
 })
 CommentSchema.plugin(timestamps);
 CommentSchema.plugin(mongoosePaginate);

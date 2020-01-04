@@ -41,6 +41,7 @@ module.exports = new class CommentController extends Controller {
         req.checkBody('name' , 'فیلد نام نمی تواند خالی بماند').notEmpty();
         req.checkBody('comment' , 'فیلد نظر نمی تواند خالی بماند').notEmpty();
         req.checkBody('property_id' ,' شناسه محصول نمی تواند خالی بماند').notEmpty();
+        req.checkBody('date' ,' تاریخ  نمی تواند خالی بماند').notEmpty();
 
         this.escapeAndTrim(req , 'name comment property_id');
 
@@ -51,6 +52,8 @@ module.exports = new class CommentController extends Controller {
             product_Id :req.body.product_Id,
             name : req.body.name,
             comment : req.body.text,
+            date:req.body.date
+
         });
         newComment.save(err => {
             if(err) throw err;
