@@ -62,6 +62,8 @@ router.get('/article' , ArticleController.index.bind(ArticleController));
 router.get('/news' , NewsController.index.bind(NewsController));
 router.get('/news/:id' , NewsController.single.bind(NewsController));
 router.post('/comment' , CommentController.store.bind(CommentController));
+router.get('/comment' , CommentController.index.bind(CommentController));
+router.get('/comment/:id' , CommentController.single.bind(CommentController));
 
 
 //admin router
@@ -117,7 +119,6 @@ adminRouter.post('/login', AdminAuthController.login.bind(AdminAuthController));
 //comment
 adminRouter.get('/comment', AdminCommentController.index.bind(AdminCommentController));
 adminRouter.get('/comment/:id' , AdminCommentController.single.bind(AdminCommentController));
-adminRouter.post('/comment' , AdminCommentController.store.bind(AdminCommentController));
 adminRouter.put('/comment/:id' , AdminCommentController.update.bind(AdminCommentController));
 adminRouter.delete('/comment/:id' , AdminCommentController.destroy.bind(AdminCommentController));
 
@@ -149,23 +150,10 @@ adminRouter.post('/news' , AdminNewsController.store.bind(AdminNewsController));
 adminRouter.put('/news/:id' , AdminNewsController.update.bind(AdminNewsController));
 adminRouter.delete('/news/:id' , AdminNewsController.destroy.bind(AdminNewsController));
 
-employeeRouter.get('/test',(req,res)=>{
-    return res.json('hello');
-})
 router.use('/admin',adminRouter);
 
 //router.use('/admin' , apiAuthAdmin, apiAdmin , adminRouter);
-//router.use('/employee' , apiAuth , apiEmployee , employeeRouter);
-//router.use('/agent' , apiAuth , apiAgent , adminRouter);
-//router.use('/developer' , apiAuth , apiDeveloper , adminRouter);
-//router.use('/customer' , apiAuth , apiCustomer , adminRouter);
-
 //router.use('/admin',[ adminRouter,employeeRouter]);
-
-//router.get('/user' , apiAuth ,UserController.index.bind(UserController));
-
-//router.get('/user' , apiAuth ,(req,res)=>{return res.json('hello user')});
-
   router.use('/test',(req,res)=>{
     return res.json('hello');
 })

@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const mongoosePaginate = require('mongoose-paginate');
 const Schema = mongoose.Schema;
-const timestamps = require('mongoose-timestamp');
 const ArticleSchema = new Schema({
     title : { type : String , required : true},
     abstract : { type : String , required : true},
@@ -12,9 +11,8 @@ const ArticleSchema = new Schema({
     image : { type :String,required:true},
     alt_img:{type:String},
     detail : { type :String,required:true},
-    date: { type :String,required:true}
-
+    date: { type :String,required:true},
+    time: { type :String,required:true}
 });
-ArticleSchema.plugin(timestamps);
 ArticleSchema.plugin(mongoosePaginate);
 module.exports = mongoose.model('Article' , ArticleSchema);

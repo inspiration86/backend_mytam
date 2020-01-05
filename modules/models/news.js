@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const timestamps = require('mongoose-timestamp');
 const mongoosePaginate = require('mongoose-paginate');
 const NewsSchema = new Schema({
     title : { type : String , required : true},
@@ -11,9 +10,10 @@ const NewsSchema = new Schema({
     active : { type :Boolean , default:false},
     image : { type : String , required : true},
     group_name: { type :String,required:true},
-    date: { type :String,required:true}
+    date: { type :String,required:true},
+    time: { type :String,required:true}
+
 });
-NewsSchema.plugin(timestamps);
 NewsSchema.plugin(mongoosePaginate);
 
 module.exports = mongoose.model('News' , NewsSchema);

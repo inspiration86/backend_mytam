@@ -3,18 +3,19 @@ const CommentTransform = require(`${config.path.transform}/v1/CommentTransform`)
 module.exports = new class CommentController extends Controller {
 
     index(req , res) {
-
-        const page = req.query.page || 1;
-        this.model.Comment.paginate({active:true} , { page , limit : 10 })
-            .then(result => {
-                if(result) {
-                    res.json({
-                        data : new CommentTransform().withPaginate().transformCollection(result),
-                        success : true
-                    });
-                }
+        this.model.Comment.find({}).sort({name:-1}).exec((err , comment) => {
+            if(err) throw err;
+            if(comment) {
+                return res.json ({
+                    data: comment,
+                    success: true
+                });
+            }
+            res.json({
+                data : 'هیچ نظری وجود ندارد',
+                success : false
             })
-            .catch(err => console.log(err));
+        });
     }
 
     single(req, res) {
@@ -42,18 +43,16 @@ module.exports = new class CommentController extends Controller {
         req.checkBody('comment' , 'فیلد نظر نمی تواند خالی بماند').notEmpty();
         req.checkBody('property_id' ,' شناسه محصول نمی تواند خالی بماند').notEmpty();
         req.checkBody('date' ,' تاریخ  نمی تواند خالی بماند').notEmpty();
-
+        req.checkBody('time' ,' تاریخ  نمی تواند خالی بماند').notEmpty();
         this.escapeAndTrim(req , 'name comment property_id');
-
         if(this.showValidationErrors(req, res))
             return;
-
         let newComment = new this.model.Comment({
             product_Id :req.body.product_Id,
             name : req.body.name,
             comment : req.body.text,
-            date:req.body.date
-
+            date:req.body.date,
+            time:req.body.time
         });
         newComment.save(err => {
             if(err) throw err;

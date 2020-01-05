@@ -16,8 +16,7 @@ const Video = require(`${config.path.model}/video`);
 
 module.exports = class Controller {
     constructor() {
-        this.model = { User,News,GroupNews,Article,
-            Comment,Cooperator,AdminUser,Slider,Role,GroupArticle,
+        this.model = { User,News,GroupNews,Article,Cooperator,AdminUser,Slider,Role,GroupArticle,
             Product , Comment , Answer,ProjectUs,Video}
     }
     showValidationErrors(req , res , callback) {

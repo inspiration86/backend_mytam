@@ -19,7 +19,6 @@ module.exports = new class ArticleController extends Controller {
     //         .catch(err => console.log(err));
     // }
 
-
     index(req , res) {
         this.model.Article.find({}).sort({title:-1}).exec((err , article) => {
             if(err) throw err;
@@ -63,12 +62,11 @@ module.exports = new class ArticleController extends Controller {
         req.checkBody('image' , 'تصویر مقاله نمی تواند خالی بماند').notEmpty();
         req.checkBody('detail' , 'متن مقاله نمی تواند خالی بماند').notEmpty();
         req.checkBody('date' , 'تاریخ مقاله نمی تواند خالی بماند').notEmpty();
+        req.checkBody('time' , 'تاریخ مقاله نمی تواند خالی بماند').notEmpty();
 
         this.escapeAndTrim(req , 'title abstract detail author');
-
         if(this.showValidationErrors(req, res))
             return;
-
         let newArticle = new this.model.Article({
             title : req.body.title,
             abstract : req.body.abstract,
@@ -80,8 +78,8 @@ module.exports = new class ArticleController extends Controller {
             key_title:req.body.key_title,
             active:req.body.active,
             date:req.body.date,
+            time:req.body.time
         })
-
         newArticle.save(err => {
             if(err) throw err;
             res.json('مقاله با موفقیت ثبت شد');
@@ -92,11 +90,20 @@ module.exports = new class ArticleController extends Controller {
         req.checkParams('id' , 'ای دی وارد شده صحیح نیست').isMongoId();
         if(this.showValidationErrors(req, res))
             return;
-        this.model.Article.findByIdAndUpdate(req.params.id ,{ title : req.body.title,abstract : req.body.abstract,detail : req.body.detail,
-            image : req.body.image,keyword : req.body.keyword,alt_img : req.body.alt_img,
-            key_title : req.body.key_title,author : req.body.author,active : req.body.active,date:req.body.data}, (err , article) => {
+        this.model.Article.findByIdAndUpdate(req.params.id ,{
+            title : req.body.title,
+            abstract : req.body.abstract,
+            detail : req.body.detail,
+            image : req.body.image,
+            keyword : req.body.keyword,
+            alt_img : req.body.alt_img,
+            key_title : req.body.key_title,
+            author : req.body.author,
+            active : req.body.active,
+            date:req.body.data,
+            time:req.body.time
+        }, (err , article) => {
             if(err) throw err;
-
             if(article) {
                 return res.json({
                     data : ' مقاله با موفقیت آپدیت شد',

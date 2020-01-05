@@ -12,7 +12,7 @@ module.exports = new class CommentController extends Controller {
                 });
             }
             res.json({
-                data : 'هیچ گروه نظری وجود ندارد',
+                data : 'هیچ نظری وجود ندارد',
                 success : false
             })
         });
@@ -37,33 +37,6 @@ module.exports = new class CommentController extends Controller {
             })
         })
     }
-
-    store(req , res) {
-        req.checkBody('name' , 'فیلد نام نمی تواند خالی بماند').notEmpty();
-        req.checkBody('comment' , 'فیلد نظر نمی تواند خالی بماند').notEmpty();
-        req.checkBody('property_id' ,' شناسه محصول نمی تواند خالی بماند').notEmpty();
-        req.checkBody('date' ,' تاریخ  نمی تواند خالی بماند').notEmpty();
-
-        this.escapeAndTrim(req , 'name comment property_id');
-
-        if(this.showValidationErrors(req, res))
-            return;
-
-            let newComment = new this.model.Comment({
-                product_Id :req.body.product_Id,
-                name : req.body.name,
-                comment : req.body.text,
-                date:req.body.date
-
-            });
-            newComment.save(err => {
-                if(err) throw err;
-                    res.json({
-                    data : 'نظر شما با موفقیت ثبت شد',
-                    success : true
-                })
-            })
-        }
 
     update(req ,res) {
         req.checkParams('id' , 'آی دی وارد شده صحیح نمی باشد').isMongoId();

@@ -44,19 +44,18 @@ module.exports = new class ProjectUsController extends Controller {
 
         if(this.showValidationErrors(req, res))
             return;
-
         let newProjectUs = new this.model.ProjectUs({
             image : req.body.image,
             title : req.body.title,
             feature : req.body.feature,
-            keyword : req.body.keyword
+            keyword : req.body.keyword,
+            alt_img:req.body.alt_img
         })
         newProjectUs.save(err => {
             if(err) throw err;
             res.json('اطلاعات با موفقیت ثبت شد');
         })
     }
-
     update(req ,res) {
         req.checkParams('id' , 'ای دی وارد شده صحیح نیست').isMongoId();
         if(this.showValidationErrors(req, res))
@@ -65,7 +64,8 @@ module.exports = new class ProjectUsController extends Controller {
             image : req.body.image,
             title : req.body.title,
             feature : req.body.feature,
-            keyword : req.body.keyword
+            keyword : req.body.keyword,
+            alt_img:req.body.alt_img
         }, (err , projectus) => {
             if(err) throw err;
 
