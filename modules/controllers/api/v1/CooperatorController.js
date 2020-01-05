@@ -8,13 +8,13 @@ module.exports = new class CooperatorController extends Controller {
                 return res.json({
                     data: cooperator,
                     success: true
-                });
+                })
 
             }
             res.json({
                 data: 'یافت نشد',
                 success: false
-            })
+            });
 
         });
     }

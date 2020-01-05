@@ -1,11 +1,11 @@
 const Controller = require(`${config.path.controller}/Controller`);
 module.exports = new class VideoController extends Controller {
 index(req , res) {
-    this.model.Video.find({}).sort({title:-1}).exec((err , grouparticle) => {
+    this.model.Video.find({}).sort({title:-1}).exec((err , video) => {
         if(err) throw err;
-        if(grouparticle) {
+        if(video) {
             return res.json ({
-                data: grouparticle,
+                data: video,
                 success: true
             });
         }

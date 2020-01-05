@@ -1,36 +1,16 @@
 const Controller = require(`${config.path.controller}/Controller`);
 module.exports = new class AnswerController extends Controller {
-    // index(req , res) {
-    //     const page = req.query.page || 1
-    //     this.model.Answer.paginate({} , { page , limit : 10, sort:{ createdAt:'desc' } , populate : ['user'] })
-    //         .then(result => {
-    //             if(result) {
-    //                 return res.json({
-    //                     data : new AnswerTransform().withPaginate().transformCollection(result),
-    //                     success : true
-    //                 });
-    //             }
-    //
-    //             res.json({
-    //                 message : 'اطلاعاتی وجود ندارد',
-    //                 success : false
-    //             })
-    //         })
-    //
-    //         .catch(err => console.log(err));
-    //
-    // }
     index(req , res) {
-        this.model.Answer.find({}).sort({replay:-1}).exec((err , answer) => {
+        this.model.Offer.find({}).sort({title:-1}).exec((err , offer) => {
             if(err) throw err;
-            if(answer) {
+            if(offer) {
                 return res.json ({
-                    data: answer,
+                    data: offer,
                     success: true
                 });
             }
             res.json({
-                data : 'هیچ پاسخی وجود ندارد',
+                data : 'هیچ تخفیفی وجود ندارد',
                 success : false
             })
         });
@@ -40,10 +20,10 @@ module.exports = new class AnswerController extends Controller {
         req.checkParams('id' , 'ای دی وارد شده صحیح نیست').isMongoId();
         if(this.showValidationErrors(req, res))
             return;
-        this.model.Answer.findById(req.params.id , (err , answer) => {
-            if(answer) {
+        this.model.Offer.findById(req.params.id , (err , offer) => {
+            if(offer) {
                 return res.json({
-                    data : answer,
+                    data : offer,
                     success : true
                 })
             }
@@ -64,14 +44,14 @@ module.exports = new class AnswerController extends Controller {
         this.escapeAndTrim(req , 'name replay');
         if(this.showValidationErrors(req, res))
             return;
-        let newAnswer = new this.model.Answer({
+        let newOffer = new this.model.Offer({
             name : req.body.name,
             replay: req.body.replay,
             date:req.body.date,
             comment_Id: req.body.comment_Id,
             time:req.body.time
         })
-        newAnswer.save(err => {
+        newOffer.save(err => {
             if(err) throw err;
             res.json('پاسخ با موفقیت ثبت شد');
         })
@@ -81,26 +61,28 @@ module.exports = new class AnswerController extends Controller {
         req.checkParams('id' , 'ای دی وارد شده صحیح نیست').isMongoId();
         if(this.showValidationErrors(req, res))
             return;
-        this.model.Answer.findByIdAndUpdate(req.params.id ,
+        this.model.Offer.findByIdAndUpdate(req.params.id ,
             {
-                name : req.body.name,
-                replay:req.body.replay,
-                date:req.body.date,
-                comment_Id:req.body.comment_Id,
-                time:req.body.time
+                product_Id : req.body.product_Id,
+                title:req.body.title,
+                offer_type:req.body.offer_type,
+                offer_type:req.body.offer_type,
+                start_date:req.body.start_date,
+                end_date:req.body.end_date,
+                percent_offer:req.body.percent_offer,
+                max_count:req.body.max_count,
+                active:req.body.active
             },
-            (err , answer) => {
+            (err , offer) => {
                 res.json('ویرایش با موفقیت انجام شد');
             });
     }
 
     destroy(req ,res) {
         req.checkParams('id' , 'ای دی وارد شده صحیح نیست').isMongoId();
-
         if(this.showValidationErrors(req, res))
             return;
-
-        this.model.Answer.findByIdAndRemove(req.params.id , (err , answer) => {
+        this.model.Offer.findByIdAndRemove(req.params.id , (err , offer) => {
             if(err) throw err;
             res.json('اطلاعات با موفقیت حذف شد');
         })

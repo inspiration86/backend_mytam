@@ -21,7 +21,7 @@ module.exports = new class AdminUserController extends Controller {
     // }
 
     index(req , res) {
-        this.model.AdminUser.find({}).sort({createdAt:'desc'}).exec((err , adminuser) => {
+        this.model.AdminUser.find({}).sort({email:-1}).exec((err , adminuser) => {
             if(err) throw err;
             if(adminuser) {
                 return res.json ({
@@ -40,7 +40,6 @@ module.exports = new class AdminUserController extends Controller {
         req.checkParams('id' , 'ای دی وارد شده صحیح نیست').isMongoId();
         if(this.showValidationErrors(req, res))
             return;
-
         this.model.AdminUser.findById(req.params.id , (err , adminuser) => {
             if(adminuser) {
                 return res.json({
@@ -48,23 +47,28 @@ module.exports = new class AdminUserController extends Controller {
                     success : true
                 })
             }
-
             res.json({
-                data : 'یافت نشد',
+                data : 'کاربر یافت نشد',
                 success : false
             })
         })
     }
-
+    //سوال
     update(req ,res) {
         req.checkParams('id' , 'ای دی وارد شده صحیح نیست').isMongoId();
         if(this.showValidationErrors(req, res))
             return;
-        console.log(req.body.postalCode.length);
-        this.model.AdminUser.findByIdAndUpdate(req.params.id ,{ name : req.body.name,mobail : req.body.mobail,tell : req.body.tell,
-            postalCode : req.body.postalCode,adress : req.body.adress,city : req.body.city,country : req.body.country}, (err , adminuser) => {
+        this.model.AdminUser.findByIdAndUpdate(req.params.id ,{
+            name : req.body.name,
+            mobail : req.body.mobail,
+            tell : req.body.tell,
+            postalCode : req.body.postalCode,
+            address : req.body.address,
+            city : req.body.city,
+            country : req.body.country,
+            profile:req.body.profile
+        }, (err , adminuser) => {
             if(err) throw err;
-
             if(adminuser) {
                 return res.json({
                     data : ' اطلاعات با موفقیت آپدیت شد',

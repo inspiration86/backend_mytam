@@ -2,9 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const timestamps = require('mongoose-timestamp');
 const mongoosePaginate = require('mongoose-paginate');
-
 const bcrypt = require('bcrypt');
-
 const UserSchema = new Schema({
     name : { type : String } ,
     profile:{ type : String } ,
@@ -20,7 +18,6 @@ const UserSchema = new Schema({
 });
 UserSchema.plugin(timestamps);
 UserSchema.plugin(mongoosePaginate);
-
 UserSchema.pre('save' , function(next) {
         bcrypt.hash(this.password, 10, (err, hash) => {
         this.password = hash;

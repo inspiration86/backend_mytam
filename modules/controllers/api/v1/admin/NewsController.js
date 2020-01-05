@@ -36,17 +36,17 @@ module.exports = new class NewsController extends Controller {
         })
     }
     store(req , res) {
-        // Validation
         req.checkBody('title' , 'عنوان خبر نمی تواند خالی بماند').notEmpty();
         req.checkBody('abstract' , 'خلاصه خبر نمی تواند خالی بماند').notEmpty();
         req.checkBody('detail' , 'جزییات خبر نمی تواند خالی بماند').notEmpty();
         req.checkBody('image' , 'آدرس تصویر خبر نمی تواند خالی بماند').notEmpty();
         req.checkBody('group_name' , 'گروه خبر نمی تواند خالی بماند').notEmpty();
         req.checkBody('date' , 'تاریخ خبر نمی تواند خالی بماند').notEmpty();
+        req.checkBody('time' , 'تاریخ خبر نمی تواند خالی بماند').notEmpty();
 
-        this.escapeAndTrim(req , 'title abstract detail group_name');
-        // if(this.showValidationErrors(req, res))
-        //     return;
+        this.escapeAndTrim(req , 'title abstract detail');
+        if(this.showValidationErrors(req, res))
+            return;
         let newNews = new this.model.News({
             title : req.body.title,
             abstract : req.body.abstract,
@@ -56,7 +56,10 @@ module.exports = new class NewsController extends Controller {
             keyword : req.body.keyword,
             active : req.body.active,
             group_name:req.body.group_name,
-            date:req.body.date
+            date:req.body.date,
+            time:req.body.time,
+            alt_img:req.body.alt_img
+
         })
         newNews.save(err => {
             if(err) throw err;
@@ -68,13 +71,21 @@ module.exports = new class NewsController extends Controller {
         req.checkParams('id' , 'ای دی وارد شده صحیح نیست').isMongoId();
         if(this.showValidationErrors(req, res))
             return;
-        this.model.News.findByIdAndUpdate(req.params.id ,{ title : req.body.title,abstract : req.body.abstract,detail : req.body.detail,
-                image : req.body.image,group_name : req.body.group_name,
-            active : req.body.active,keyword : req.body.keyword,
-            key_title : req.body.key_title,date:req.body.date},
+        this.model.News.findByIdAndUpdate(req.params.id ,{
+            title : req.body.title,
+            abstract : req.body.abstract,
+            detail : req.body.detail,
+            image : req.body.image,
+            group_name : req.body.group_name,
+            active : req.body.active,
+            keyword : req.body.keyword,
+            key_title : req.body.key_title,
+            date:req.body.date,
+            time:req.body.time,
+            alt_img:req.body.alt_img
+            },
             (err , news) => {
             if(err) throw err;
-
             if(news) {
                 return res.json({
                     data : ' خبر با موفقیت آپدیت شد',

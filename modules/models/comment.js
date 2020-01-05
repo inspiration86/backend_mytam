@@ -1,16 +1,14 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const timestamps = require('mongoose-timestamp');
 const mongoosePaginate=require('mongoose-paginate');
 const CommentSchema=new Schema({
     name:{type:String,required:true},
     comment:{type:String,required:true},
     product_Id:{type:String,required:true},
-    active:{type:Boolean,default: 'false'},
-    date: { type :String,required:true}
-
+    active:{type:Boolean,default:false},
+    date: { type :String,required:true},
+    time: { type :String,required:true}
 })
-CommentSchema.plugin(timestamps);
 CommentSchema.plugin(mongoosePaginate);
 module.exports=mongoose.model('Comment',CommentSchema);
 

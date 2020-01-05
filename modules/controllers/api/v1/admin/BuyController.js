@@ -1,30 +1,12 @@
 const Controller = require(`${config.path.controller}/Controller`);
-const ArticleTransform = require(`${config.path.transform}/v1/ArticleTransform`);
 
-module.exports = new class ArticleController extends Controller {
-    // index(req , res) {
-    //     const page = req.query.page || 1;
-    //     this.model.Article.paginate({} , { page , limit : 10,sort:{createdAt:'desc'}}).then(result => {
-    //         if(result) {
-    //             return res.json({
-    //                 data : new ArticleTransform().withPaginate().transformCollection(result),
-    //                 success : true
-    //             });
-    //         }
-    //         res.json({
-    //             message : 'مقاله ای وجود ندارد',
-    //             success : false
-    //         })
-    //     })
-    //         .catch(err => console.log(err));
-    // }
-
+module.exports = new class BuyController extends Controller {
     index(req , res) {
-        this.model.Article.find({}).sort({title:-1}).exec((err , article) => {
+        this.model.Buy.find({}).sort({title:-1}).exec((err , buy) => {
             if(err) throw err;
-            if(article) {
+            if(buy) {
                 return res.json ({
-                    data: article,
+                    data: buy,
                     success: true
                 });
             }
@@ -39,10 +21,10 @@ module.exports = new class ArticleController extends Controller {
         req.checkParams('id' , 'ای دی وارد شده صحیح نیست').isMongoId();
         if(this.showValidationErrors(req, res))
             return;
-        this.model.Article.findById(req.params.id , (err , article) => {
-            if(article) {
+        this.model.Article.findById(req.params.id , (err , buy) => {
+            if(buy) {
                 return res.json({
-                    data : article,
+                    data : buy,
                     success : true
                 })
             }
@@ -65,20 +47,14 @@ module.exports = new class ArticleController extends Controller {
         this.escapeAndTrim(req , 'title abstract detail author');
         if(this.showValidationErrors(req, res))
             return;
-        let newArticle = new this.model.Article({
-            title : req.body.title,
-            abstract : req.body.abstract,
-            detail: req.body.detail,
-            image : req.body.image,
-            alt_img : req.body.alt_img,
-            author:req.body.author,
-            keyword:req.body.keyword,
-            key_title:req.body.key_title,
-            active:req.body.active,
-            date:req.body.date,
-            time:req.body.time
+        let newBuy = new this.model.Article({
+            //soal age chand mahsol
+            product_Id : req.body.product_Id,
+            user_id : req.body.user_id,
+            number: req.body.number,
+
         })
-        newArticle.save(err => {
+        newBuy.save(err => {
             if(err) throw err;
             res.json('مقاله با موفقیت ثبت شد');
         })
@@ -88,7 +64,7 @@ module.exports = new class ArticleController extends Controller {
         req.checkParams('id' , 'ای دی وارد شده صحیح نیست').isMongoId();
         if(this.showValidationErrors(req, res))
             return;
-        this.model.Article.findByIdAndUpdate(req.params.id ,{
+        this.model.Buy.findByIdAndUpdate(req.params.id ,{
             title : req.body.title,
             abstract : req.body.abstract,
             detail : req.body.detail,
@@ -119,7 +95,7 @@ module.exports = new class ArticleController extends Controller {
         req.checkParams('id' , 'ای دی وارد شده صحیح نیست').isMongoId();
         if(this.showValidationErrors(req, res))
             return;
-        this.model.Article.findByIdAndRemove(req.params.id , (err , article) => {
+        this.model.Buy.findByIdAndRemove(req.params.id , (err , article) => {
             if(err) throw err;
             if(article) {
                 return res.json({

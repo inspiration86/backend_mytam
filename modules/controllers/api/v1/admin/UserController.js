@@ -3,24 +3,6 @@ const UserTransform = require(`${config.path.transform}/v1/UserTransform`);
 const bcrypt = require('bcrypt');
 
 module.exports = new class UserController extends Controller {
-
-    // index(req , res) {
-    //     const page = req.query.page || 1;
-    //     this.model.AdminUser.paginate({} , { page , limit : 10,sort:{createdAt:'desc'},select:'title abstract keyword author file image detail'}).then(result => {
-    //         if(result) {
-    //             return res.json({
-    //                 data : new AdminUserTransform().withPaginate().transformCollection(result),
-    //                 success : true
-    //             });
-    //         }
-    //         res.json({
-    //             message : ';کابر وجود ندارد',
-    //             success : false
-    //         })
-    //     })
-    //         .catch(err => console.log(err));
-    // }
-
     index(req , res) {
         this.model.User.find({}).sort({createdAt:'desc'}).exec((err , user) => {
             if(err) throw err;

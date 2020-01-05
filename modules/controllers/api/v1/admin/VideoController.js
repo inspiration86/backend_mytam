@@ -1,11 +1,11 @@
 const Controller = require(`${config.path.controller}/Controller`);
 module.exports = new class VideoController extends Controller {
     index(req , res) {
-        this.model.Video.find({}).sort({title:-1}).exec((err , grouparticle) => {
+        this.model.Video.find({}).sort({title:-1}).exec((err , video) => {
             if(err) throw err;
-            if(grouparticle) {
+            if(video) {
                 return res.json ({
-                    data: grouparticle,
+                    data: video,
                     success: true
                 });
             }
@@ -40,13 +40,13 @@ module.exports = new class VideoController extends Controller {
         req.checkBody('video' , ' ویدیو نمی تواند خالی بماند').notEmpty();
 
         this.escapeAndTrim(req , 'title');
-
         if(this.showValidationErrors(req, res))
             return;
-
         let newVideo = new this.model.Video({
             title : req.body.title,
-            video : req.body.video
+            video : req.body.video,
+            keyword : req.body.keyword
+
         })
         newVideo.save(err => {
             if(err) throw err;
@@ -60,10 +60,10 @@ module.exports = new class VideoController extends Controller {
             return;
         this.model.Video.findByIdAndUpdate(req.params.id , {
             title : req.body.title,
-            video : req.body.video
+            video : req.body.video,
+            keyword:req.body.keyword
         }, (err , video) => {
             if(err) throw err;
-
             if(video) {
                 return res.json({
                     data : 'ویدیو با موفقیت آپدیت شد',

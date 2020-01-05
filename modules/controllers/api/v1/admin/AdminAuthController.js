@@ -10,6 +10,7 @@ module.exports = new class AdminAuthController extends Controller {
         req.checkBody('email' , 'فیلد ایمیل نمی تواند خالی بماند').notEmpty();
         req.checkBody('password' , 'فیلد رمز عبور نمی تواند خالی بماند').notEmpty();
         req.checkBody('email' , 'فرمت ایمیل صحیح نمی باشد').isEmail();
+        req.checkBody('access_level' , 'فیلد سطح دسترسی نمی تواند خالی بماند').notEmpty();
 
         if(this.showValidationErrors(req, res))
             return;
@@ -17,7 +18,8 @@ module.exports = new class AdminAuthController extends Controller {
             type:req.body.type,
             email : req.body.email,
             password : req.body.password,
-            role:req.body.role
+            role:req.body.role,
+            access_level:req.body.access_level
         }).save(err => {
             if(err) {
                 if(err.code == 11000) {
@@ -35,16 +37,14 @@ module.exports = new class AdminAuthController extends Controller {
             });
         })
     }
-
     login(req , res) {
         req.checkBody('email', 'فیلد ایمیل نمی تواند خالی بماند').notEmpty();
         req.checkBody('password', 'فیلد پسورد نمی تواند خالی بماند').notEmpty();
-        req.checkBody('captcha', 'فیلد کپچا نمی تواند خالی بماند').notEmpty();
+        req.checkBody('recaptcha', 'فیلد کپچا نمی تواند خالی بماند').notEmpty();
 
         if (this.showValidationErrors(req, res))
             return;
-        this.recaptcha(req,res);
-        if(this.recaptcha(req,res)) {
+        if(this.recaptcha(req.body.recaptcha,req.connection.remoteAddress)) {
             //search user
             this.model.AdminUser.findOne({email: req.body.email}, (err, user) => {
                 if (err) throw err;
@@ -69,29 +69,22 @@ module.exports = new class AdminAuthController extends Controller {
         }
     }
 
-    async recaptcha(req,res){
+    async recaptcha(recaptcha,connection){
         // Secret key
         const secretKey = '6LcbOcwUAAAAAPv_Rc-1LmA3-n4hAJISCYFQVfaa';
         // Verify URL
         const query = stringify({
             secret: secretKey,
-            response: req.body.captcha,
-            remoteip: req.connection.remoteAddress
+            response: recaptcha,
+            remoteip: connection
         });
         const verifyURL = `https://google.com/recaptcha/api/siteverify?${query}`;
         // Make a request to verifyURL
         const body =await fetch(verifyURL).then(res => res.json()).catch(error=> console.log(error));
         // If not successful
         if (body.success !== undefined && !body.success)
-            //return res.json({ success: false, msg: 'Failed captcha verification' });
-            return 'ok';
-            console.log('ok')
-        // If successful
-       // return res.json({ success: true, msg: 'Captcha passed' });
-        return 'fail';
-
-        console.log('fail');
-
+            return 'true';
+        else
+        return 'false';
     }
-
 }

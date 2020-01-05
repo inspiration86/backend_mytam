@@ -41,16 +41,18 @@ module.exports = new class CommentController extends Controller {
     store(req , res) {
         req.checkBody('name' , 'فیلد نام نمی تواند خالی بماند').notEmpty();
         req.checkBody('comment' , 'فیلد نظر نمی تواند خالی بماند').notEmpty();
-        req.checkBody('property_id' ,' شناسه محصول نمی تواند خالی بماند').notEmpty();
         req.checkBody('date' ,' تاریخ  نمی تواند خالی بماند').notEmpty();
-        req.checkBody('time' ,' تاریخ  نمی تواند خالی بماند').notEmpty();
-        this.escapeAndTrim(req , 'name comment property_id');
+        req.checkBody('time' ,' زمان  نمی تواند خالی بماند').notEmpty();
+        req.checkBody('product_Id' ,' کد محصول نمی تواند خالی بماند').notEmpty();
+
+
+        this.escapeAndTrim(req , 'name comment product_Id');
         if(this.showValidationErrors(req, res))
             return;
         let newComment = new this.model.Comment({
             product_Id :req.body.product_Id,
             name : req.body.name,
-            comment : req.body.text,
+            comment : req.body.comment,
             date:req.body.date,
             time:req.body.time
         });

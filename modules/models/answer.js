@@ -6,7 +6,9 @@ const AnswerSchema=new Schema({
     name : {type:String,required:true},
     replay:{type:String,required:true},
     comment_Id:{type:String,required:true},
-    date: { type :String,required:true}
+    date: { type :String,required:true},
+    time: { type :String,required:true}
+
 });
 AnswerSchema.plugin(timestamps);
 AnswerSchema.plugin(mongoosePaginate);

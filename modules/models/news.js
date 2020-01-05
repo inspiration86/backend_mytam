@@ -11,7 +11,9 @@ const NewsSchema = new Schema({
     image : { type : String , required : true},
     group_name: { type :String,required:true},
     date: { type :String,required:true},
-    time: { type :String,required:true}
+    time: { type :String,required:true},
+    alt_img:{type:String},
+
 
 });
 NewsSchema.plugin(mongoosePaginate);

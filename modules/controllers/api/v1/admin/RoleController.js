@@ -36,7 +36,6 @@ module.exports = new class RoleController extends Controller {
     }
 
     store(req , res) {
-        // Validation
         req.checkBody('role' , ' نقش نمی تواند خالی بماند').notEmpty();
 
         this.escapeAndTrim(req , 'role ');
@@ -69,7 +68,7 @@ module.exports = new class RoleController extends Controller {
                 });
             }
             res.status(404).json({
-                data : 'چنین گروه خبری وجود ندارد',
+                data : 'چنین اطلاعاتی وجود ندارد',
                 success : false
             });
         });
@@ -88,7 +87,7 @@ module.exports = new class RoleController extends Controller {
                 });
             }
             res.status(404).json({
-                data : 'چنین نقشی خبری وجود ندارد',
+                data : 'چنین اطلاعاتی وجود ندارد',
                 success : false
             });
         });

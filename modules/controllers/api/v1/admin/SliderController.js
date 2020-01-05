@@ -21,7 +21,6 @@ module.exports = new class SliderController extends Controller {
         req.checkParams('id' , 'ای دی وارد شده صحیح نیست').isMongoId();
         if(this.showValidationErrors(req, res))
             return;
-
         this.model.Slider.findById(req.params.id , (err , slider) => {
             if(slider) {
                 return res.json({
@@ -29,7 +28,6 @@ module.exports = new class SliderController extends Controller {
                     success : true
                 })
             }
-
             res.json({
                 data : 'یافت نشد',
                 success : false
@@ -41,8 +39,6 @@ module.exports = new class SliderController extends Controller {
         req.checkBody('image' , ' تصویر نمی تواند خالی بماند').notEmpty();
         req.checkBody('title' , 'عنوان نمی تواند خالی بماند').notEmpty();
         req.checkBody('text' , 'متن نمی تواند خالی بماند').notEmpty();
-        // req.checkBody('link' , 'لینک نمی تواند خالی بماند').notEmpty();
-        // req.checkBody('keyword' , 'کلیدواژه نمی تواند خالی بماند').notEmpty();
 
         this.escapeAndTrim(req , 'title text');
 
@@ -65,9 +61,13 @@ module.exports = new class SliderController extends Controller {
         req.checkParams('id' , 'ای دی وارد شده صحیح نیست').isMongoId();
         if(this.showValidationErrors(req, res))
             return;
-        this.model.Slider.findByIdAndUpdate(req.params.id ,{ title : req.body.title,
-            text : req.body.text,image : req.body.image,link : req.body.link,
-            keyword : req.body.keyword}, (err , slider) => {
+        this.model.Slider.findByIdAndUpdate(req.params.id ,{
+            title : req.body.title,
+            text : req.body.text,
+            image : req.body.image,
+            link : req.body.link,
+            keyword : req.body.keyword
+        }, (err , slider) => {
             if(err) throw err;
 
             if(slider) {

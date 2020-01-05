@@ -15,6 +15,7 @@ module.exports = new class UploadController extends Controller {
             })
         }
     }
+
     uploadVideo(req, res) {
         if(req.file) {
             res.json({

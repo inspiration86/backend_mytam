@@ -12,7 +12,6 @@ module.exports = new class AuthController extends Controller {
         if(this.showValidationErrors(req, res))
             return;
         this.model.User({
-            user_type:req.body.user_type,
             email : req.body.email,
             password : req.body.password
         }).save(err => {

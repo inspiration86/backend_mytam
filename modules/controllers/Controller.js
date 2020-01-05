@@ -13,11 +13,14 @@ const Comment = require(`${config.path.model}/comment`);
 const Answer = require(`${config.path.model}/answer`);
 const ProjectUs = require(`${config.path.model}/projectus`);
 const Video = require(`${config.path.model}/video`);
+const Buy = require(`${config.path.model}/buy`);
+const Offer = require(`${config.path.model}/offer`);
 
 module.exports = class Controller {
     constructor() {
-        this.model = { User,News,GroupNews,Article,Cooperator,AdminUser,Slider,Role,GroupArticle,
-            Product , Comment , Answer,ProjectUs,Video}
+        this.model = { User,News,GroupNews,Article,Cooperator,
+            AdminUser,Slider,Role,GroupArticle,Product , Comment ,
+            Answer,ProjectUs,Video,Buy,Offer}
     }
     showValidationErrors(req , res , callback) {
         let errors = req.validationErrors();

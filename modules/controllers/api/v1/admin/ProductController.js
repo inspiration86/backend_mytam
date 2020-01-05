@@ -1,24 +1,39 @@
 const Controller = require(`${config.path.controller}/Controller`);
 const ProductTransform = require(`${config.path.transform}/v1/ProductTransform`);
 module.exports = new class ProductController extends Controller {
+    // index(req , res) {
+    //     const page = req.query.page || 1
+    //     this.model.Product.paginate({} , { page , limit : 10 , sort:{ createdAt:'desc' } })
+    //         .then(result => {
+    //             if(result) {
+    //                 return res.json({
+    //                     data : new ProductTransform().withPaginate().transformCollection(result),
+    //                     success : true
+    //                 });
+    //             }
+    //
+    //             res.json({
+    //                 message : 'محصولی وجود ندارد',
+    //                 success : false
+    //             })
+    //         })
+    //
+    //         .catch(err => console.log(err));
+    // }
     index(req , res) {
-        const page = req.query.page || 1
-        this.model.Product.paginate({} , { page , limit : 10 , sort:{ createdAt:'desc' } })
-            .then(result => {
-                if(result) {
-                    return res.json({
-                        data : new ProductTransform().withPaginate().transformCollection(result),
-                        success : true
-                    });
-                }
-
-                res.json({
-                    message : 'محصولی وجود ندارد',
-                    success : false
-                })
+        this.model.Product.find({}).sort({name:-1}).exec((err , product) => {
+            if(err) throw err;
+            if(product) {
+                return res.json ({
+                    data: product,
+                    success: true
+                });
+            }
+            res.json({
+                data : 'هیچ محصولی وجود ندارد',
+                success : false
             })
-
-            .catch(err => console.log(err));
+        });
     }
 
     single(req, res) {
@@ -42,20 +57,15 @@ module.exports = new class ProductController extends Controller {
     }
 
     store(req , res) {
-        // Validation
         req.checkBody('name' , 'نام محصول نمیتواند خالی بماند').notEmpty();
         req.checkBody('code' , 'کد محصول نمیتواند خالی بماند').notEmpty();
         req.checkBody('price' , 'قیمت محصول نمیتواند خالی بماند').notEmpty();
-        req.checkBody('price_garranty' , 'قیمت گارانتی محصول نمیتواند خالی بماند').notEmpty();
-        req.checkBody('stock' , ' موجودی محصول نمیتواند خالی بماند').notEmpty();
-        req.checkBody('tag','برچسب محصول نمیتواند خالی بماند').notEmpty();
-        req.checkBody('detail','توضیحات محصول نمیتواند خالی بماند').notEmpty();
-        req.checkBody('key_word','کلید واژه نمیتواند خالی بماند ').notEmpty();
+        req.checkBody('number' , ' تعداد موجودی محصول نمیتواند خالی بماند').notEmpty();
+        req.checkBody('use','کاربرد محصول نمیتواند خالی بماند').notEmpty();
         req.checkBody('description' , ' شرح محصول نمیتواند خالی بماند').notEmpty();
         req.checkBody('image' , ' لطفا تصویر را درج کنید').notEmpty();
 
-
-        this.escapeAndTrim(req , 'name code price price_garranty stock tag detail key_word description');
+       this.escapeAndTrim(req , 'name code price price_garranty stock tag detail key_word description');
 
         if(this.showValidationErrors(req, res))
             return;
@@ -65,18 +75,15 @@ module.exports = new class ProductController extends Controller {
             code : req.body.code,
             price: req.body.price,
             price_garranty : req.body.price_garranty,
-            stock:req.body.stock,
-            tag:req.body.tag,
-            detail:req.body.detail,
-            key_word:req.body.key_word,
+            use:req.body.use,
+            number:req.body.number,
+            keyword:req.body.keyword,
             description:req.body.description,
             image:req.body.image,
+            alt_img:req.body.alt_img,
             exist:req.body.exist,
             active:req.body.active
-
-
         })
-
         newProduct.save(err => {
             if(err) throw err;
             res.json('محصول با موفقیت ثبت شد');
@@ -92,19 +99,18 @@ module.exports = new class ProductController extends Controller {
                 code : req.body.code,
                 price: req.body.price,
                 price_garranty : req.body.price_garranty,
-                stock:req.body.stock,
-                tag:req.body.tag,
+                use:req.body.use,
+                number:req.body.number,
                 detail:req.body.detail,
-                key_word:req.body.key_word,
+                keyword:req.body.keyword,
                 description:req.body.description,
                 image:req.body.image,
+                alt_img:req.body.alt_img,
                 exist:req.body.exist,
                 active:req.body.active
             },
             (err , product) => {
-
                 if(err) throw err;
-
                 if(product) {
                     return res.json({
                         data : ' ویرایش محصول با موفقیت انجام شد',

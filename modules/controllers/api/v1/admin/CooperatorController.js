@@ -38,19 +38,15 @@ module.exports = new class CooperatorController extends Controller {
     }
 
     store(req , res) {
-        // Validation
         req.checkBody('image' , ' تصویر نمی تواند خالی بماند').notEmpty();
         req.checkBody('name' , 'نام نمی تواند خالی بماند').notEmpty();
         this.escapeAndTrim(req , 'name');
-
         if(this.showValidationErrors(req, res))
             return;
-
         let newCooperator = new this.model.Cooperator({
             name : req.body.name,
             image : req.body.image
         })
-
         newCooperator.save(err => {
             if(err) throw err;
             res.json('اطلاعات با موفقیت ثبت شد');
@@ -61,7 +57,10 @@ module.exports = new class CooperatorController extends Controller {
         req.checkParams('id' , 'ای دی وارد شده صحیح نیست').isMongoId();
         if(this.showValidationErrors(req, res))
             return;
-        this.model.Cooperator.findByIdAndUpdate(req.params.id ,{ image: req.body.image,name: req.body.name}, (err , cooperator) => {
+        this.model.Cooperator.findByIdAndUpdate(req.params.id ,{
+            image: req.body.image,
+            name: req.body.name
+        }, (err , cooperator) => {
             if(err) throw err;
             if(cooperator) {
                 return res.json({

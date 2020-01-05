@@ -31,6 +31,7 @@ const ArticleController = require(`${ControllerApi}/v1/ArticleController`);
 const NewsController = require(`${ControllerApi}/v1/NewsController`);
 const CommentController = require(`${ControllerApi}/v1/CommentController`);
 const CooperatorController = require(`${ControllerApi}/v1/CooperatorController`);
+const ProductController = require(`${ControllerApi}/v1/ProductController`);
 
 // AdminController
 const AdminAuthController = require(`${ControllerApi}/v1/admin/AdminAuthController`);
@@ -64,6 +65,8 @@ router.get('/news/:id' , NewsController.single.bind(NewsController));
 router.post('/comment' , CommentController.store.bind(CommentController));
 router.get('/comment' , CommentController.index.bind(CommentController));
 router.get('/comment/:id' , CommentController.single.bind(CommentController));
+router.get('/product/:id' , ProductController.single.bind(ProductController));
+router.get('/product' , ProductController.index.bind(ProductController));
 
 
 //admin router
@@ -121,6 +124,13 @@ adminRouter.get('/comment', AdminCommentController.index.bind(AdminCommentContro
 adminRouter.get('/comment/:id' , AdminCommentController.single.bind(AdminCommentController));
 adminRouter.put('/comment/:id' , AdminCommentController.update.bind(AdminCommentController));
 adminRouter.delete('/comment/:id' , AdminCommentController.destroy.bind(AdminCommentController));
+
+//product
+adminRouter.get('/product', AdminProductController.index.bind(AdminProductController));
+adminRouter.get('/product/:id' , AdminProductController.single.bind(AdminProductController));
+adminRouter.post('/product' , AdminProductController.store.bind(AdminProductController));
+adminRouter.put('/product/:id' , AdminProductController.update.bind(AdminProductController));
+adminRouter.delete('/product/:id' , AdminProductController.destroy.bind(AdminProductController));
 
 //cooperator
 adminRouter.get('/cooperator', AdminCooperatorController.index.bind(AdminCooperatorController));
