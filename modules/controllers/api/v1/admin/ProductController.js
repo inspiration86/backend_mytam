@@ -64,17 +64,14 @@ module.exports = new class ProductController extends Controller {
         req.checkBody('use','کاربرد محصول نمیتواند خالی بماند').notEmpty();
         req.checkBody('description' , ' شرح محصول نمیتواند خالی بماند').notEmpty();
         req.checkBody('image' , ' لطفا تصویر را درج کنید').notEmpty();
-
-       this.escapeAndTrim(req , 'name code price price_garranty stock tag detail key_word description');
-
+        this.escapeAndTrim(req , 'name code price price_garranty stock tag detail key_word description');
         if(this.showValidationErrors(req, res))
             return;
-
         let newProduct = new this.model.Product({
             name : req.body.name,
             code : req.body.code,
             price: req.body.price,
-            price_garranty : req.body.price_garranty,
+            price_warranty : req.body.price_warranty,
             use:req.body.use,
             number:req.body.number,
             keyword:req.body.keyword,
@@ -88,7 +85,15 @@ module.exports = new class ProductController extends Controller {
             if(err) throw err;
             res.json('محصول با موفقیت ثبت شد');
         })
-    }
+       let newStock = new this.model.Stock({
+            product_code : req.body.code,
+            number : req.body.number,
+        })
+        newStock.save(err=>{
+            if (err) throw err;
+            res.json('تعداد موجودی در جدول موجودی ثبت شد')
+        })
+        }
 
     update(req ,res) {
         req.checkParams('id' , 'ای دی وارد شده صحیح نیست').isMongoId();
@@ -98,7 +103,7 @@ module.exports = new class ProductController extends Controller {
             {  name : req.body.name,
                 code : req.body.code,
                 price: req.body.price,
-                price_garranty : req.body.price_garranty,
+                price_warranty : req.body.price_warranty,
                 use:req.body.use,
                 number:req.body.number,
                 detail:req.body.detail,
@@ -142,5 +147,23 @@ module.exports = new class ProductController extends Controller {
                 success : false
             });
         })
+    }
+
+    searchByCode(req,res){
+        this.model.Product.findOne({code:req.body.code}).exec((err , product) => {
+            if(err) throw err;
+            if(product) {
+                return res.json({
+                    data: product,
+                    success: true
+
+                })
+            }
+            res.json({
+                data : 'محصول مورد نظر یافت نشد',
+                success : false
+            })
+            })
+
     }
 }

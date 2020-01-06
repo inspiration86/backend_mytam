@@ -4,8 +4,8 @@ const timestamps = require('mongoose-timestamp');
 const ProductSchema = new Schema({
     name : { type : String , required : true},
     code : { type : String , required : true,unique:true},
-    price : { type : String },
-    price_garranty :{ type : String },
+    price : { type : Number,required : true },
+    price_warranty :{ type : Number },
     use : {type :String,required:true},
     number : { type :Number,required:true},
     keyword : {type:String},

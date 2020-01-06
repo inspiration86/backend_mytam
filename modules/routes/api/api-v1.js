@@ -2,17 +2,16 @@ const express = require('express');
 const router = express.Router();
 const adminRouter = express.Router();
 const employeeRouter = express.Router();
+const helmet = require('helmet');
 /*
 const RateLimit = require('express-rate-limit');
-const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
 //rate limiting
 const apiLimiter  = RateLimit({
     max: 2,// max requests
     windowMs: 15 * 60 * 1000, // 15min
     message: 'درخواست ها بیش از حد مجاز' // message to send
-});
-*/
+});*/
 // middlewares 
 const apiAuth = require('./middleware/apiAuth');
 const apiAuthAdmin = require('./middleware/apiAuthAdmin');
@@ -32,6 +31,8 @@ const NewsController = require(`${ControllerApi}/v1/NewsController`);
 const CommentController = require(`${ControllerApi}/v1/CommentController`);
 const CooperatorController = require(`${ControllerApi}/v1/CooperatorController`);
 const ProductController = require(`${ControllerApi}/v1/ProductController`);
+const BuyController = require(`${ControllerApi}/v1/BuyController`);
+const OfferController = require(`${ControllerApi}/v1/OfferController`);
 
 // AdminController
 const AdminAuthController = require(`${ControllerApi}/v1/admin/AdminAuthController`);
@@ -48,6 +49,8 @@ const AdminCommentController = require(`${ControllerApi}/v1/admin/CommentControl
 const AdminCooperatorController = require(`${ControllerApi}/v1/admin/CooperatorController`);
 const AdminProjectUsController = require(`${ControllerApi}/v1/admin/ProjectUsController`);
 const AdminProductController = require(`${ControllerApi}/v1/admin/ProductController`);
+const AdminBuyController = require(`${ControllerApi}/v1/admin/BuyController`);
+const AdminOfferController = require(`${ControllerApi}/v1/admin/OfferController`);
 
 //user router
 router.get('/' , HomeController.index);
@@ -67,6 +70,10 @@ router.get('/comment' , CommentController.index.bind(CommentController));
 router.get('/comment/:id' , CommentController.single.bind(CommentController));
 router.get('/product/:id' , ProductController.single.bind(ProductController));
 router.get('/product' , ProductController.index.bind(ProductController));
+router.get('/buy/:id' , BuyController.single.bind(BuyController));
+router.post('/buy' , BuyController.store.bind(BuyController));
+router.delete('/buy/:id' , BuyController.destroy.bind(BuyController));
+router.get('/offer/:id' , OfferController.single.bind(OfferController));
 
 
 //admin router
@@ -81,6 +88,18 @@ adminRouter.get('/user/:id' , AdminUserUserController.single.bind(AdminUserUserC
 adminRouter.delete('/user/:id' , AdminUserUserController.destroy.bind(AdminUserUserController));
 adminRouter.put('/user/:id' , AdminUserUserController.update.bind(AdminUserUserController));
 
+//offer
+adminRouter.get('/offer' , AdminOfferController.index.bind(AdminOfferController));
+adminRouter.get('/offer/:id' , AdminOfferController.single.bind(AdminOfferController));
+adminRouter.post('/offer' , AdminOfferController.store.bind(AdminOfferController));
+adminRouter.delete('/offer/:id' , AdminOfferController.destroy.bind(AdminOfferController));
+adminRouter.put('/offer/:id' , AdminOfferController.update.bind(AdminOfferController));
+
+//buy
+adminRouter.get('/buy' , AdminBuyController.index.bind(AdminBuyController));
+adminRouter.get('/buy/:id' , AdminBuyController.single.bind(AdminBuyController));
+adminRouter.delete('/buy/:id' , AdminBuyController.destroy.bind(AdminBuyController));
+adminRouter.put('/buy/:id' , AdminBuyController.update.bind(AdminBuyController));
 
 //role
 adminRouter.get('/role' , AdminRoleController.index.bind(AdminRoleController));
@@ -126,6 +145,7 @@ adminRouter.put('/comment/:id' , AdminCommentController.update.bind(AdminComment
 adminRouter.delete('/comment/:id' , AdminCommentController.destroy.bind(AdminCommentController));
 
 //product
+adminRouter.post('/product/code', AdminProductController.searchByCode.bind(AdminProductController));
 adminRouter.get('/product', AdminProductController.index.bind(AdminProductController));
 adminRouter.get('/product/:id' , AdminProductController.single.bind(AdminProductController));
 adminRouter.post('/product' , AdminProductController.store.bind(AdminProductController));

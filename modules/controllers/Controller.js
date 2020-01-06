@@ -15,12 +15,14 @@ const ProjectUs = require(`${config.path.model}/projectus`);
 const Video = require(`${config.path.model}/video`);
 const Buy = require(`${config.path.model}/buy`);
 const Offer = require(`${config.path.model}/offer`);
+const Stock = require(`${config.path.model}/stock`);
+
 
 module.exports = class Controller {
     constructor() {
         this.model = { User,News,GroupNews,Article,Cooperator,
             AdminUser,Slider,Role,GroupArticle,Product , Comment ,
-            Answer,ProjectUs,Video,Buy,Offer}
+            Answer,ProjectUs,Video,Buy,Offer,Stock}
     }
     showValidationErrors(req , res , callback) {
         let errors = req.validationErrors();
