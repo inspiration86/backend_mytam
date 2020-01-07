@@ -11,6 +11,7 @@ const UserSchema = new Schema({
     postalCode : { type : String } ,
     address : { type : String } ,
     city: { type : String } ,
+    province:{ type : String },
     country: { type : String },
     email : { type : String , required : true , unique : true} ,
     password : { type : String , required : true} ,

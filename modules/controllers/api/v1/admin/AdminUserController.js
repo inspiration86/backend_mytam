@@ -53,7 +53,7 @@ module.exports = new class AdminUserController extends Controller {
             })
         })
     }
-    //سوال
+
     update(req ,res) {
         req.checkParams('id' , 'ای دی وارد شده صحیح نیست').isMongoId();
         if(this.showValidationErrors(req, res))
@@ -65,6 +65,7 @@ module.exports = new class AdminUserController extends Controller {
             postalCode : req.body.postalCode,
             address : req.body.address,
             city : req.body.city,
+            province : req.body.province,
             country : req.body.country,
             profile:req.body.profile
         }, (err , adminuser) => {

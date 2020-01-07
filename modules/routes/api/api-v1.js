@@ -51,6 +51,7 @@ const AdminProjectUsController = require(`${ControllerApi}/v1/admin/ProjectUsCon
 const AdminProductController = require(`${ControllerApi}/v1/admin/ProductController`);
 const AdminBuyController = require(`${ControllerApi}/v1/admin/BuyController`);
 const AdminOfferController = require(`${ControllerApi}/v1/admin/OfferController`);
+const EditSuperAdminController = require(`${ControllerApi}/v1/admin/EditSuperAdminController`);
 
 //user router
 router.get('/' , HomeController.index);
@@ -58,7 +59,8 @@ router.get('/version' , HomeController.version);
 router.post('/resetpassword' , ResetPasswordController.resetpassword.bind(ResetPasswordController));
 router.post('/login' , AuthController.login.bind(AuthController));
 router.post('/register' , AuthController.register.bind(AuthController));
-//router.get('/user' , apiAuth , UserController.index.bind(UserController));
+router.get('/user' , UserController.single.bind(UserController));
+router.put('/user' , UserController.update.bind(UserController));
 router.get('/cooperator' , CooperatorController.index.bind(CooperatorController));
 router.get('/cooperator/:id' , CooperatorController.index.bind(CooperatorController));
 router.get('/article/:id' , ArticleController.single.bind(ArticleController));
@@ -75,6 +77,8 @@ router.post('/buy' , BuyController.store.bind(BuyController));
 router.delete('/buy/:id' , BuyController.destroy.bind(BuyController));
 router.get('/offer/:id' , OfferController.single.bind(OfferController));
 
+// edit user pass super admin
+adminRouter.put('/superadmin' , EditSuperAdminController.update.bind(EditSuperAdminController));
 
 //admin router
 //upload

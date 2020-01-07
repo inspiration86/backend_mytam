@@ -2,17 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b3cc2b2d-c509-4365-adfc-d3b584a34ece" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/modules/controllers/api/v1/OfferController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/models/stock.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/controllers/api/v1/admin/EditSuperAdminController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/controllers/Controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/modules/controllers/Controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/controllers/api/v1/BuyController.js" beforeDir="false" afterPath="$PROJECT_DIR$/modules/controllers/api/v1/BuyController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/controllers/api/v1/admin/BuyController.js" beforeDir="false" afterPath="$PROJECT_DIR$/modules/controllers/api/v1/admin/BuyController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/controllers/api/v1/admin/OfferController.js" beforeDir="false" afterPath="$PROJECT_DIR$/modules/controllers/api/v1/admin/OfferController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/controllers/api/v1/admin/ProductController.js" beforeDir="false" afterPath="$PROJECT_DIR$/modules/controllers/api/v1/admin/ProductController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/models/buy.js" beforeDir="false" afterPath="$PROJECT_DIR$/modules/models/buy.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/models/offer.js" beforeDir="false" afterPath="$PROJECT_DIR$/modules/models/offer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/models/product.js" beforeDir="false" afterPath="$PROJECT_DIR$/modules/models/product.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/controllers/api/v1/UserController.js" beforeDir="false" afterPath="$PROJECT_DIR$/modules/controllers/api/v1/UserController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/controllers/api/v1/admin/AdminAuthController.js" beforeDir="false" afterPath="$PROJECT_DIR$/modules/controllers/api/v1/admin/AdminAuthController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/controllers/api/v1/admin/AdminUserController.js" beforeDir="false" afterPath="$PROJECT_DIR$/modules/controllers/api/v1/admin/AdminUserController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/models/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/modules/models/user.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/modules/routes/api/api-v1.js" beforeDir="false" afterPath="$PROJECT_DIR$/modules/routes/api/api-v1.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -40,42 +35,7 @@
     <favorites_list name="backend_mytam" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="api-v1.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules/routes/api/api-v1.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="158">
-              <caret line="78" column="14" lean-forward="true" selection-start-line="78" selection-start-column="14" selection-end-line="78" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="OfferController.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/modules/controllers/api/v1/admin/OfferController.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="293">
-              <caret line="95" column="1" lean-forward="true" selection-start-line="95" selection-start-column="1" selection-end-line="95" selection-end-column="1" />
-              <folding>
-                <element signature="e#154#557#0" />
-                <element signature="e#580#1072#0" />
-                <element signature="e#1095#1966#0" />
-                <element signature="e#1989#2741#0" />
-                <element signature="e#2765#3082#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="offer.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules/models/offer.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="5" column="8" lean-forward="true" selection-start-line="4" selection-start-column="3" selection-end-line="12" selection-end-column="61" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -83,7 +43,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/modules/routes/api/middleware/UploadMiddleware.js" />
         <option value="$PROJECT_DIR$/modules/config.js" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/modules/routes/api/middleware/apiAuthAdmin.js" />
@@ -95,8 +54,6 @@
         <option value="$PROJECT_DIR$/modules/models/article.js" />
         <option value="$PROJECT_DIR$/modules/controllers/api/v1/admin/CommentController.js" />
         <option value="$PROJECT_DIR$/modules/models/admin_user.js" />
-        <option value="$PROJECT_DIR$/modules/controllers/api/v1/admin/AdminAuthController.js" />
-        <option value="$PROJECT_DIR$/modules/controllers/api/v1/admin/AdminUserController.js" />
         <option value="$PROJECT_DIR$/modules/models/answer.js" />
         <option value="$PROJECT_DIR$/modules/controllers/api/v1/admin/ArticleController.js" />
         <option value="$PROJECT_DIR$/modules/controllers/api/v1/admin/AnswerController.js" />
@@ -110,8 +67,6 @@
         <option value="$PROJECT_DIR$/modules/controllers/api/v1/admin/SliderController.js" />
         <option value="$PROJECT_DIR$/modules/controllers/api/v1/admin/UploadController.js" />
         <option value="$PROJECT_DIR$/modules/controllers/api/v1/admin/UserController.js" />
-        <option value="$PROJECT_DIR$/modules/models/user.js" />
-        <option value="$PROJECT_DIR$/modules/controllers/api/v1/UserController.js" />
         <option value="$PROJECT_DIR$/modules/controllers/api/v1/admin/VideoController.js" />
         <option value="$PROJECT_DIR$/modules/controllers/api/v1/AnswerController.js" />
         <option value="$PROJECT_DIR$/modules/controllers/api/v1/AuthController.js" />
@@ -131,9 +86,14 @@
         <option value="$PROJECT_DIR$/modules/controllers/api/v1/BuyController.js" />
         <option value="$PROJECT_DIR$/modules/controllers/api/v1/admin/BuyController.js" />
         <option value="$PROJECT_DIR$/modules/controllers/api/v1/OfferController.js" />
-        <option value="$PROJECT_DIR$/modules/routes/api/api-v1.js" />
         <option value="$PROJECT_DIR$/modules/models/offer.js" />
         <option value="$PROJECT_DIR$/modules/controllers/api/v1/admin/OfferController.js" />
+        <option value="$PROJECT_DIR$/modules/models/user.js" />
+        <option value="$PROJECT_DIR$/modules/controllers/api/v1/admin/AdminUserController.js" />
+        <option value="$PROJECT_DIR$/modules/controllers/api/v1/UserController.js" />
+        <option value="$PROJECT_DIR$/modules/routes/api/api-v1.js" />
+        <option value="$PROJECT_DIR$/modules/controllers/api/v1/admin/AdminAuthController.js" />
+        <option value="$PROJECT_DIR$/modules/controllers/api/v1/admin/EditSuperAdminController.js" />
       </list>
     </option>
   </component>
@@ -159,7 +119,7 @@
   <component name="PhpServers">
     <servers />
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="323" />
     <option name="y" value="28" />
     <option name="width" value="930" />
@@ -298,12 +258,12 @@
       <workItem from="1577512868122" duration="36302000" />
       <workItem from="1577694055760" duration="42627000" />
       <workItem from="1578048216477" duration="47659000" />
-      <workItem from="1578294709087" duration="10823000" />
+      <workItem from="1578294709087" duration="21808000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="530797000" />
+    <option name="totallyTimeSpent" value="541782000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -316,16 +276,15 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3293718" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.108169444" side_tool="true" visible="true" weight="0.14091681" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.10741301" side_tool="true" visible="true" weight="0.15110357" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.3293718" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3293718" />
       <window_info id="npm" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.89183056" visible="true" weight="0.14091681" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.8671875" visible="true" weight="0.21255673" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" sideWeight="0.892587" visible="true" weight="0.15110357" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.8671875" visible="true" weight="0.21255673" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" weight="0.32980332" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24962178" />
@@ -372,22 +331,10 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="25" />
+      <option name="time" value="26" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/modules/config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-81" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/models/admin_user.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="20" column="3" lean-forward="true" selection-start-line="20" selection-start-column="3" selection-end-line="20" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/modules/models/answer.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -435,13 +382,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/controllers/api/v1/admin/AdminUserController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="56" column="4" selection-start-line="56" selection-start-column="4" selection-end-line="56" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/modules/controllers/api/v1/admin/ProjectUsController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2430">
@@ -477,13 +417,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/controllers/api/v1/UserController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1024">
-          <caret line="38" column="5" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/modules/controllers/api/v1/admin/UserController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -505,24 +438,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/controllers/api/v1/VideoController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/modules/models/projectus.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="243">
           <caret line="9" column="15" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/models/user.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="16" column="7" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="8" />
         </state>
       </provider>
     </entry>
@@ -551,13 +470,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
           <caret line="35" column="10" lean-forward="true" selection-start-line="35" selection-start-column="10" selection-end-line="35" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/controllers/api/v1/AuthController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="49" column="34" selection-start-line="49" selection-start-column="27" selection-end-line="49" selection-end-column="34" />
         </state>
       </provider>
     </entry>
@@ -613,30 +525,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="106">
           <caret line="4" column="2" selection-end-line="135" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/controllers/api/v1/admin/AnswerController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="106">
-          <caret line="20" column="6" lean-forward="true" selection-end-line="107" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/controllers/api/v1/ResetPasswordController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="6" column="77" selection-start-line="6" selection-start-column="77" selection-end-line="6" selection-end-column="77" />
-          <folding>
-            <element signature="e#370#4132#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/controllers/api/v1/admin/AdminAuthController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="60" column="23" selection-start-line="60" selection-start-column="23" selection-end-line="60" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -725,13 +613,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/routes/api/api-v1.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="78" column="14" lean-forward="true" selection-start-line="78" selection-start-column="14" selection-end-line="78" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/modules/controllers/api/v1/OfferController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
@@ -748,7 +629,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/controllers/api/v1/admin/OfferController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
+        <state relative-caret-position="297">
           <caret line="95" column="1" lean-forward="true" selection-start-line="95" selection-start-column="1" selection-end-line="95" selection-end-column="1" />
           <folding>
             <element signature="e#154#557#0" />
@@ -757,6 +638,94 @@
             <element signature="e#1989#2741#0" />
             <element signature="e#2765#3082#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/controllers/api/v1/AuthController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1323">
+          <caret line="49" column="34" selection-start-line="49" selection-start-column="27" selection-end-line="49" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/controllers/api/v1/admin/AdminUserController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="6" selection-end-line="3" selection-end-column="67" />
+          <folding>
+            <element signature="e#228#249#0" />
+            <element signature="e#924#1343#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/controllers/api/v1/admin/AnswerController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="82" column="10" lean-forward="true" selection-start-line="80" selection-start-column="5" selection-end-line="93" selection-end-column="15" />
+          <folding>
+            <element signature="e#878#1285#0" />
+            <element signature="e#1308#1804#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/routes/api/api-v1.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="267">
+          <caret line="82" column="14" lean-forward="true" selection-start-line="82" selection-start-column="14" selection-end-line="82" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/controllers/api/v1/admin/AdminAuthController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/models/admin_user.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="20" column="3" lean-forward="true" selection-start-line="20" selection-start-column="3" selection-end-line="20" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/controllers/api/v1/ResetPasswordController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="8" column="22" lean-forward="true" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/controllers/api/v1/admin/EditSuperAdminController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/controllers/api/v1/VideoController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-270">
+          <caret line="8" column="7" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/controllers/api/v1/UserController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="29" column="5" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
+          <folding>
+            <element signature="e#229#636#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/models/user.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="25" column="7" lean-forward="true" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
         </state>
       </provider>
     </entry>

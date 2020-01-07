@@ -18,6 +18,35 @@ module.exports = new class UserController extends Controller {
         });
     }
 
+    update(req ,res) {
+        req.checkParams('id' , 'ای دی وارد شده صحیح نیست').isMongoId();
+        if(this.showValidationErrors(req, res))
+            return;
+        this.model.User.findByIdAndUpdate(req.params.id ,{
+            name : req.body.name,
+            profile:req.body.profile ,
+            mobail :req.body.mobail,
+            tell : req.body.tell ,
+            postalCode :req.body.postalCode,
+            address :req.body.address,
+            city: req.body.city,
+            province: req.body.province,
+            country:req.body.country
+        }, (err , user) => {
+            if(err) throw err;
+            if(user) {
+                return res.json({
+                    data : ' اطلاعات کاربر با موفقیت ثبت شد',
+                    success : true
+                });
+            }
+            res.status(404).json({
+                data : 'چنین کابری وجود ندارد',
+                success : false
+            });
+        });
+    }
+
     single(req, res) {
         req.checkParams('id' , 'ای دی وارد شده صحیح نیست').isMongoId();
         if(this.showValidationErrors(req, res))
