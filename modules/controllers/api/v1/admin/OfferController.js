@@ -41,9 +41,9 @@ module.exports = new class OfferController extends Controller {
         req.checkBody('start_date' , 'تاریخ آغاز تخفیف نمیتواند خالی بماند').notEmpty();
         req.checkBody('end_date' , 'تاریخ پایان تخفیف نمیتواند خالی بماند').notEmpty();
         req.checkBody('percent_offer' , 'درصد تخفیف نمیتواند خالی بماند').notEmpty();
-        req.checkBody('max_count' , 'تعداد تخفیف نمیتواند خالی بماند').notEmpty();
-        req.checkBody('remain_count' , 'تعداد تخفیف باقی مانده نمیتواند خالی بماند').notEmpty();
-        this.escapeAndTrim(req , 'title product_Id offer_type');
+        req.checkBody('max_number' , 'تعداد تخفیف نمیتواند خالی بماند').notEmpty();
+        req.checkBody('remain_number' , 'تعداد تخفیف باقی مانده نمیتواند خالی بماند').notEmpty();
+        this.escapeAndTrim(req , 'title product_Id offer_type max_number remain_number');
         if(this.showValidationErrors(req, res))
             return;
         let newOffer = new this.model.Offer({
@@ -53,13 +53,13 @@ module.exports = new class OfferController extends Controller {
             start_date : req.body.start_date,
             end_date : req.body.end_date,
             percent_offer :req.body.percent_offer,
-            max_count :req.body.max_count,
-            remain_count : req.body.remain_count,
+            max_number :req.body.max_number,
+            remain_number : req.body.remain_number,
             active :req.body.active,
         })
         newOffer.save(err => {
             if(err) throw err;
-            res.json('نخفیف با موفقیت ثبت شد');
+            res.json('تخفیف با موفقیت ثبت شد');
         })
     }
 

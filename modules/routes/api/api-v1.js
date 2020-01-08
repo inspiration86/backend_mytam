@@ -3,15 +3,15 @@ const router = express.Router();
 const adminRouter = express.Router();
 const employeeRouter = express.Router();
 const helmet = require('helmet');
-/*
+
 const RateLimit = require('express-rate-limit');
 const mongoSanitize = require('express-mongo-sanitize');
 //rate limiting
 const apiLimiter  = RateLimit({
-    max: 2,// max requests
-    windowMs: 15 * 60 * 1000, // 15min
+    max: 50,// max requests
+    windowMs: 10 * 60 * 1000, // 15min
     message: 'درخواست ها بیش از حد مجاز' // message to send
-});*/
+});
 // middlewares 
 const apiAuth = require('./middleware/apiAuth');
 const apiAuthAdmin = require('./middleware/apiAuthAdmin');
@@ -60,7 +60,7 @@ router.post('/resetpassword' , ResetPasswordController.resetpassword.bind(ResetP
 router.post('/login' , AuthController.login.bind(AuthController));
 router.post('/register' , AuthController.register.bind(AuthController));
 router.get('/user' , UserController.single.bind(UserController));
-router.put('/user' , UserController.update.bind(UserController));
+router.put('/user/:id' , UserController.update.bind(UserController));
 router.get('/cooperator' , CooperatorController.index.bind(CooperatorController));
 router.get('/cooperator/:id' , CooperatorController.index.bind(CooperatorController));
 router.get('/article/:id' , ArticleController.single.bind(ArticleController));
@@ -134,10 +134,11 @@ adminRouter.put('/video/:id' , AdminVideoController.update.bind(AdminVideoContro
 adminRouter.delete('/video/:id' , AdminVideoController.destroy.bind(AdminVideoController));
 
 //admin user
-adminRouter.get('/adminuser' , AdminUserController.index.bind(AdminUserController));
+adminRouter.get('/adminuser',apiAuthAdmin, AdminUserController.index.bind(AdminUserController));
 adminRouter.get('/adminuser/:id' , AdminUserController.single.bind(AdminUserController));
 adminRouter.delete('/adminuser/:id' , AdminUserController.destroy.bind(AdminUserController));
 adminRouter.put('/adminuser/:id' , AdminUserController.update.bind(AdminUserController));
+
 // admin auth
 adminRouter.post('/register' , AdminAuthController.register.bind(AdminAuthController));
 adminRouter.post('/login', AdminAuthController.login.bind(AdminAuthController));
@@ -184,11 +185,10 @@ adminRouter.post('/news' , AdminNewsController.store.bind(AdminNewsController));
 adminRouter.put('/news/:id' , AdminNewsController.update.bind(AdminNewsController));
 adminRouter.delete('/news/:id' , AdminNewsController.destroy.bind(AdminNewsController));
 
-router.use('/admin',adminRouter);
+// router.use('/admin',adminRouter);
 
-//router.use('/admin' , apiAuthAdmin, apiAdmin , adminRouter);
-//router.use('/admin',[ adminRouter,employeeRouter]);
-  router.use('/test',(req,res)=>{
+router.use('/admin',[adminRouter,apiAdmin,apiAuthAdmin]);
+  router.use('/test',apiLimiter,(req,res)=>{
     return res.json('hello');
 })
 module.exports = router;

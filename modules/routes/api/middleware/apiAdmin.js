@@ -1,13 +1,10 @@
 module.exports = (req , res , next) =>  {
-    if(req.AdminUser.type == 'admin') {
+    if(req.user.type == 'admin') {
         next();
-        return res.status(200).json({
-            type:'admin',
-            success : true
-        });
+        return;
     }
     return res.status(403).json({
-        message : 'You cannot access this root',
+        message : 'شما نمی توانید به این روت دسترسی داشته باشید',
         success : false
     })
 }

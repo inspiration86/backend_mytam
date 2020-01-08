@@ -5,7 +5,7 @@ module.exports = (req , res , next) =>  {
     let token = req.body.token || req.query.token || req.headers['x-access-token'];
 
     if(token) {
-        return jwt.verify(token ,config.secret,'sadas@!$@#%!^#!GSDGETWT@#OI%J@#%!*#)^U#)^U!@)U') , (err , decode ) => {
+        return jwt.verify(token ,config.secret, (err , decode ) => {
             if(err) {
                 return res.json({
                     success : false ,
@@ -14,7 +14,6 @@ module.exports = (req , res , next) =>  {
             } 
             User.findById(decode.user_id , (err , user) => {
                 if(err) throw err;
-
                 if(user) {
                     user.token = token;
                     req.user = user;
@@ -29,7 +28,7 @@ module.exports = (req , res , next) =>  {
 
             // next();
             // return;
-        }
+        })
     }
     return res.status(403).json({
         data : 'No Token Provided',

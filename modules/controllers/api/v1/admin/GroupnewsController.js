@@ -1,7 +1,8 @@
 const Controller = require(`${config.path.controller}/Controller`);
 module.exports = new class GroupNewsController extends Controller {
     index(req , res) {
-        this.model.GroupNews.find({}).sort({group_name:-1}).exec((err , groupnews) => {
+        try{
+            this.model.GroupNews.find({}).sort({group_name:-1}).exec((err , groupnews) => {
             if(err) throw err;
             if(groupnews) {
                 return res.json ({
@@ -14,6 +15,11 @@ module.exports = new class GroupNewsController extends Controller {
                 success : false
             })
         });
+        }catch (err) {
+            return 'error in run'
+        }finally {
+            return 'run success'
+        }
     }
 
     single(req, res) {

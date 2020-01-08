@@ -10,7 +10,7 @@ module.exports = new class AdminAuthController extends Controller {
         req.checkBody('email' , 'فیلد ایمیل نمی تواند خالی بماند').notEmpty();
         req.checkBody('password' , 'فیلد رمز عبور نمی تواند خالی بماند').notEmpty();
         req.checkBody('email' , 'فرمت ایمیل صحیح نمی باشد').isEmail();
-      //  req.checkBody('access_level' , 'فیلد سطح دسترسی نمی تواند خالی بماند').notEmpty();
+        req.checkBody('access_level' , 'فیلد سطح دسترسی نمی تواند خالی بماند').notEmpty();
 
         if(this.showValidationErrors(req, res))
             return;
@@ -48,6 +48,7 @@ module.exports = new class AdminAuthController extends Controller {
             //search user
             this.model.AdminUser.findOne({email: req.body.email}, (err, user) => {
                 if (err) throw err;
+                console.log(user);
                 if (user == null)
                     return res.status(422).json({
                         data: 'اطلاعات وارد شده صحیح نمی باشد',

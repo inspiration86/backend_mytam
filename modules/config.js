@@ -1,16 +1,10 @@
 const path = require('path');
-/*const bcrypt = require('bcrypt');
-const sec='';
-bcrypt.hash('sadas@!$@#%!^#!GSDGETWT@#OI%J@#%!*#)^U#)^U!@)U', 10, (err, hash) => {
-     this.sec = hash;
-    console.log(this.sec);
-    console.log(bcrypt.compare( 'sadas@!$@#%!^#!GSDGETWT@#OI%J@#%!*#)^U#)^U!@)U','sadas@!$@#%!^#!GSDGETWT@#OI%J@#%!*#)^U#)^U!@)U'));
-});*/
+const bcrypt = require('bcrypt');
 module.exports = {
     port : 3000,
     host:'http://localhost:',
     secret :'sadas@!$@#%!^#!GSDGETWT@#OI%J@#%!*#)^U#)^U!@)U',
-    //secret :this.sec,
+    //secret : bcrypt.hashSync('sadas@!$@#%!^#!GSDGETWT@#OI%J@#%!*#)^U#)^U!@)U', 10),
     path : {
         controllers : { 
             api : path.resolve('./modules/controllers/api'),
